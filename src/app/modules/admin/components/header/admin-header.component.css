@@ -1,0 +1,26 @@
+.navbar-brand {
+    margin-right: 0rem;
+}
+
+.navbar-nav {
+    padding-right: 10px;
+}
+
+#btn-logout {
+    cursor: pointer;
+}
+
+.nav-link {
+    /* color: rgba(0,0,0,.9) !important; */
+    color: rgba(0,0,0,.9) !important;
+    color: white !important;
+    transition: all .5s;
+}
+
+.nav-link.active {
+    color: greenyellow !important;
+}
+
+.nav-link:hover {
+    color: greenyellow !important;
+}

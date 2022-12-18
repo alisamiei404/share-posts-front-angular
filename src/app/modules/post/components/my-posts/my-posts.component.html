@@ -1,0 +1,25 @@
+<div class="col-sm-11 col-md-9 col-lg-7 mx-auto">
+    <app-loading-spinner *ngIf="loading"></app-loading-spinner>
+    <p class="text-center" *ngIf="!loading && posts.length < 1">چیزی برای نمایش وجود ندارد!</p>
+    <div *ngIf="!loading && posts.length > 0">
+        <div class="card mb-4" *ngFor="let post of posts; let i = index;" [hidden]="postId === post.id">
+        <div class="card-body">
+            <p>عنوان</p>
+            <p class="px-3">{{ post.title }}</p>
+            <p class="px-3 text-muted" dir="ltr">{{ post.created_at | jalali }}</p>
+            <p class="px-3 text-primary" *ngIf="post.status === 2">منتشر شده</p>
+            <p class="px-3 text-warning" *ngIf="post.status === 1">در صف انتشار</p>
+            <p class="px-3 text-danger" *ngIf="post.status === 0">از طرف مدیر رد شد</p>
+            <hr>
+            <a class="btn btn-info btn-sm ml-1" [routerLink]="['/showpost', post.slug]">نمایش</a>
+            <a class="btn btn-warning btn-sm ml-1" [routerLink]="['/editpost', post.slug, 'edit']">ویرایش</a>
+            <button class="btn btn-danger btn-sm" [disabled]="disable" (click)="onDelete(post.slug, post.id)">حذف</button>
+        </div>
+        </div>
+
+        <div class="card-footer text-muted" *ngIf="countPage !== 1">
+            <app-pagination countPage="{{ countPage }}" pageId="{{ pageId }}"></app-pagination>
+        </div>
+        
+    </div>
+</div>

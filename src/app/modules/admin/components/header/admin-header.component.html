@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container">
+      <a class="navbar-brand" [routerLink]="['/admin']">ng404</a>
+      <button class="navbar-toggler" (click)="showMenu()" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div [ngClass]="IsShowMenu ? 'collapse navbar-collapse show' : 'collapse navbar-collapse'" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto" (click)="showMenu()">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/admin/dashboard']" routerLinkActive="active">داشبورد</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/admin/users']" routerLinkActive="active">لیست کاربر</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/admin/posts']" routerLinkActive="active">لیست پست</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/admin/logins']" routerLinkActive="active">لیست ورود</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/admin/requests']" routerLinkActive="active">لیست درخواست</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">صفحه کاربری</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" id="btn-logout" dir="ltr">{{ d | jalali }}</a>
+              </li>
+            <li class="nav-item">
+                <a class="nav-link" id="btn-logout" (click)="logout()">خروج</a>
+            </li>
+        </ul>
+      </div>
+    </div>  
+</nav>

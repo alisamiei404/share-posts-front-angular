@@ -1,0 +1,13 @@
+
+<div class="col-sm-11 col-md-9 col-lg-6 mx-auto">
+    <app-loading-spinner *ngIf="loading"></app-loading-spinner>
+    <div *ngIf="!loading">
+        <h3>{{ post.title }}</h3>
+        <hr>
+        <h4>نویسنده</h4>
+        <h4 class="pr-3">{{ post.name }}</h4>
+        <p class="px-3 text-muted" dir="ltr">{{ post.created_at | jalali }}</p>
+        <hr>
+        <p>{{ post.content }}</p>
+    </div>
+</div>

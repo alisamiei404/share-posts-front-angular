@@ -1,0 +1,34 @@
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-10 mx-auto">
+    <app-loading-spinner *ngIf="loading"></app-loading-spinner>
+    <p class="text-center" *ngIf="!loading && items.length < 1">چیزی برای نمایش وجود ندارد!</p>
+    <div class="card text-center" *ngIf="!loading && items.length > 0">
+      <div class="card-header">
+        لیست لاگین
+      </div>
+      <div class="card-body table-responsive">
+        <table class="table table-striped table-bordered text-center">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">نام</th>
+              <th scope="col">ip</th>
+              <th scope="col">سیستم</th>
+              <th scope="col">تاریخ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of items; let i = index;">
+              <td>{{ i+1 }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.ip }}</td>
+              <td>{{ item.system }}</td>
+              <td dir="ltr">{{ item.created_at | jalali }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer text-muted" *ngIf="countPage !== 1">
+        <app-pagination countPage="{{ countPage }}" pageId="{{ pageId }}"></app-pagination>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+<div class="col-sm-11 col-md-12 col-lg-10 mx-auto">
+    <app-loading-spinner *ngIf="loading"></app-loading-spinner>
+    <p class="text-center" *ngIf="!loading && posts.length < 1">چیزی برای نمایش وجود ندارد!</p>
+    <div class="card text-center" *ngIf="!loading && posts.length > 0">
+      <div class="card-header">
+        <p>لیست پست ها</p>
+        <nav aria-label="Page navigation example" class="nav-page">
+          <ul class="pagination">
+            
+            <li class="page-item" [ngClass]="status === 3 ? 'active':''">
+              <a class="page-link" [routerLink]="['/admin/postsUser']" [queryParams]="{slug: slug, pageId: 1, status: 3}">همه</a>
+            </li>
+            <li class="page-item" [ngClass]="status === 1 ? 'active':''">
+              <a class="page-link" [routerLink]="['/admin/postsUser']" [queryParams]="{slug: slug, pageId: 1, status: 1}">در صف</a>
+            </li>
+            <li class="page-item" [ngClass]="status === 2 ? 'active':''">
+              <a class="page-link" [routerLink]="['/admin/postsUser']" [queryParams]="{slug: slug, pageId: 1, status: 2}">پذیرفته</a>
+            </li>
+            <li class="page-item" [ngClass]="status === 0 ? 'active':''">
+              <a class="page-link" [routerLink]="['/admin/postsUser']" [queryParams]="{slug: slug, pageId: 1, status: 0}">ردشده</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+      <div class="card-body table-responsive">
+        <table class="table table-striped table-bordered text-center">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">عنوان</th>
+              <th scope="col">نویسنده</th>
+              <th scope="col">وضعیت</th>
+              <th scope="col">تاریخ</th>
+              <th scope="col">دستورات</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let post of posts; let i = index;" [hidden]="postId === post.id">
+              <td>{{ i + 1 }}</td>
+              <td>{{ post.title }}</td>
+              <td>{{ post.name }}</td>
+              <td *ngIf="post.status === 2">
+               منتشر شده
+                <br>
+                <button class="btn btn-sm btn-danger" [disabled]="disable" (click)="changeStatus(post.slug, 0, post.id)">رد</button>
+              </td>
+              <!-- <td *ngIf="post.status === 1">در صف انتشار</td> -->
+              <td *ngIf="post.status === 1">
+                در صف انتشار
+                <br>
+                <button class="btn btn-sm btn-primary" [disabled]="disable" (click)="changeStatus(post.slug, 2, post.id)">منتشر</button>
+                <button class="btn btn-sm btn-danger" [disabled]="disable" (click)="changeStatus(post.slug, 0, post.id)">رد</button>
+              </td>
+              <td *ngIf="post.status === 0">
+               رد شده
+                <br>
+                <button class="btn btn-sm btn-primary" [disabled]="disable" (click)="changeStatus(post.slug, 2, post.id)">منتشر</button>
+              </td>
+              <td dir="ltr">{{ post.created_at | jalali }}</td>
+              <td>
+                <a class="btn btn-info btn-sm ml-1" [routerLink]="['/admin/showpost', post.slug]">نمایش</a>
+                <button class="btn btn-danger btn-sm" [disabled]="disable" (click)="onDelete(post.slug, post.id)">حذف</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer text-muted" *ngIf="countPage !== 1">
+        <app-pagination countPage="{{ countPage }}" slug="{{ slug }}" pageId="{{ pageId }}" status="{{ status }}"></app-pagination>
+      </div>
+    </div>
+</div>

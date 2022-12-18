@@ -1,0 +1,30 @@
+<div class="col-sm-11 col-md-9 col-lg-5 mx-auto">
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+          <label>عنوان</label>
+          <input type="text" class="form-control" formControlName="title">
+          <span 
+            *ngIf="!addForm.get('title')?.valid && addForm.get('title')?.touched"
+            class="text-danger">
+                <span *ngIf="addForm.get('title')?.errors!['minlength']">عنوان حداقل باید 1 حرف باشد!</span>
+                <span *ngIf="addForm.get('title')?.errors!['required']">این فیلد نمیتواند خالی باشد!</span>
+            </span>
+            <p class="text-danger" *ngIf="errors && errors.title && addForm.get('title')?.valid">{{ errors.title[0] }}</p>
+      </div>
+      <div class="form-group">
+          <label>متن</label>
+          <textarea rows="5" class="form-control" formControlName="content"></textarea>
+          <span 
+            *ngIf="!addForm.get('content')?.valid && addForm.get('content')?.touched"
+            class="text-danger">
+                <span *ngIf="addForm.get('content')?.errors!['minlength']">متن حداقل باید 2 حرف باشد!</span>
+                <span *ngIf="addForm.get('content')?.errors!['required']">این فیلد نمیتواند خالی باشد!</span>
+            </span>
+            <p class="text-danger" *ngIf="errors && errors.content && addForm.get('content')?.valid">{{ errors.content[0] }}</p>
+      </div>
+      <button type="submit" class="btn btn-primary px-5 mt-3" [disabled]="!addForm.valid" *ngIf="!btnLoading">ارسال</button>
+      <button type="submit" class="btn btn-primary px-5 mt-3" disabled *ngIf="btnLoading">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        </button>
+  </form>
+</div>

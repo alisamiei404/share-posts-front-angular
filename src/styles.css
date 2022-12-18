@@ -1,0 +1,64 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Vazir';
+    src: url('./assets/fonts/Vazir.woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+/* ------------------------------- */
+body {
+    font-family: 'Vazir' !important;
+    text-align: right;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.text-danger {
+    color: red !important;
+}
+
+dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 0rem;
+}
+
+.pagination {
+    padding-right: 0;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.nav-page .page-link:focus {
+    box-shadow: none;
+}
+
+.page-item:first-child .page-link {
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    border-top-left-radius: 0rem;
+    border-bottom-left-radius: 0rem;
+}
+
+.page-item:last-child .page-link {
+    border-top-right-radius: 0rem;
+    border-bottom-right-radius: 0rem;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
+
+table td:first-child{
+    min-width: 20px;
+}
+
+table td{
+    min-width: 120px;
+    max-width: 250px;
+}
+
+table .btn{
+    margin-bottom: 5px;
+}
+

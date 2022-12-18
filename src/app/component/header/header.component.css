@@ -1,0 +1,33 @@
+.navbar {
+    /* background-color: red !important; */
+    background-color: white !important;
+    box-shadow: black 0px 1px 22px -9px;
+    min-height: 70px;
+}
+
+.navbar-brand {
+    margin-right: 0rem;
+}
+
+.navbar-nav {
+    padding-right: 10px;
+}
+
+#btn-logout {
+    cursor: pointer;
+}
+
+.nav-link {
+    color: rgba(0,0,0,.9) !important;
+    transition: all .5s;
+}
+
+.nav-link.active {
+    color: blue !important;
+}
+
+.nav-link:hover {
+    color: blue !important;
+}
+
+

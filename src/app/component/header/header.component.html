@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-white mb-4">
+  <div class="container">
+    <a class="navbar-brand" [routerLink]="['/']">ng404</a>
+    <button class="navbar-toggler" (click)="showMenu()" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div [ngClass]="IsShowMenu ? 'collapse navbar-collapse show' : 'collapse navbar-collapse'" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto" (click)="showMenu()">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">خانه</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/myposts']" routerLinkActive="active">لیست پست</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/addpost']" routerLinkActive="active">افزودن پست</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn && isAdmin">
+          <a class="nav-link" [routerLink]="['/admin/dashboard']" routerLinkActive="active">بخش ادمین</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" *ngIf="!isLoggedIn">
+          <a class="nav-link" [routerLink]="['/auth/register']" routerLinkActive="active">ثبت نام</a>
+        </li>
+        <li class="nav-item" *ngIf="!isLoggedIn">
+          <a class="nav-link" [routerLink]="['/auth/login']" routerLinkActive="active">ورود</a>
+        </li>
+        
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a class="nav-link">{{ name }}</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a class="nav-link" id="btn-logout" (click)="logout()">خروج</a>
+        </li>
+      </ul>
+    </div>
+  </div>  
+</nav>

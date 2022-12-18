@@ -1,0 +1,14 @@
+
+<div class="col-sm-11 col-md-9 col-lg-6 mx-auto">
+    <div *ngIf="dataSet">
+        <h3>{{ post.title }}</h3>
+        <hr>
+        <h4>نویسنده</h4>
+        <h4 class="pr-3">{{ post.name }}</h4>
+        <hr>
+        <p>{{ post.content }}</p>
+    </div>
+    <div *ngIf="!dataSet">
+        <p>در حال دریافت اطلاعات...</p>
+    </div>
+</div>

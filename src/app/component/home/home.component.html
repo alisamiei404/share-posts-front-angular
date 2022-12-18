@@ -1,0 +1,20 @@
+<div class="col-sm-11 col-md-9 col-lg-7 mx-auto">
+    <app-loading-spinner *ngIf="loading"></app-loading-spinner>
+    <p class="text-center" *ngIf="!loading && posts.length < 1">چیزی برای نمایش وجود ندارد!</p>
+    <div *ngIf="!loading && posts.length > 0">
+        <div class="card mb-4" *ngFor="let post of posts; let i = index;">
+            <div class="card-body">
+                <p>عنوان</p>
+                <p class="px-3">{{ post.title }}</p>
+                <p class="px-3 text-muted" dir="ltr">{{ post.created_at | jalali }}</p>
+                <hr>
+                <a class="btn btn-info btn-sm ml-1" [routerLink]="['/showpost', post.slug]">نمایش</a>
+            </div>
+        </div>
+
+        <div class="card-footer text-muted" *ngIf="countPage !== 1">
+            <app-pagination countPage="{{ countPage }}" pageId="{{ pageId }}"></app-pagination>
+        </div>
+        
+    </div>
+</div>
